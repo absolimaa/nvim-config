@@ -3,7 +3,6 @@ require 'core.keymaps'
 
 
 -- [[ Install `lazy.nvim` plugin manager ]]
-
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -17,24 +16,19 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
---
 --  To update plugins you can run
 --    :Lazy update
---
--- NOTE: Here is where you install your plugins.
-
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  require 'plugins.onedark',  
+  require 'plugins.onedark',
   require 'plugins.guess-indent',
   require 'plugins.neo-tree',
   require 'plugins.gitsigns',
   require 'plugins.treesitter',
-  require 'plugins.treesitter-cpp',
   require 'plugins.bufferline',
   require 'plugins.lualine',
   require 'plugins.comment',
-  require 'plugins.autopairs', 
+  require 'plugins.autopairs',
   require 'plugins.telescope',
+  require 'plugins.lsp',
 })
