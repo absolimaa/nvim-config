@@ -1,6 +1,6 @@
 return {
     "navarasu/onedark.nvim",
-    priority = 1000, -- make sure to load this before all the other start plugins
+    -- priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
         require('onedark').setup {
             style = 'darker',
@@ -12,9 +12,10 @@ return {
                 teal = "#35b093",
                 var = "#d0404f",
                 yellow = "#f4c244",
-                cmnt = "#c7cca0",
+                cmnt = "#949680",
             },
             highlights = {
+                MatchParen = { fg = "#80ff00", fmt = "bold" },
                 ["@lsp.type.keyword"] = { fg = "$purple" },
                 ["@lsp.type.property"] = { fg = "$cyan" },
                 ["@lsp.type.parameter"] = { fg = "$rich_orange", fmt = 'italic' },

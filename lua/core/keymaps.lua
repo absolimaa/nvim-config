@@ -1,11 +1,12 @@
 local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
 
 -- Set leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Toggle line wrapping
-vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
+map('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
 
 -- Default shell
 vim.opt.shell = "powershell"
@@ -14,56 +15,79 @@ vim.opt.shellquote = "\""
 vim.opt.shellxquote = ""
 
 -- Indentation
-vim.keymap.set('i', '<C-BS>', '<C-w>', opts)
-vim.keymap.set('i', '<S-Tab>', '<C-d>', opts)
-vim.keymap.set('n', '<S-Tab>', '<<', opts)
-vim.keymap.set('v', '<S-Tab>', '<gv', opts)
+map('i', '<C-BS>', '<C-w>', opts)
+map('i', '<S-Tab>', '<C-d>', opts)
+map('n', '<S-Tab>', '<<', opts)
+map('v', '<S-Tab>', '<gv', opts)
 
 -- Resize windows
-vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', opts)
-vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', opts)
-vim.keymap.set('n', '<C-Left>', ':vertical resize +2<CR>', opts)
-vim.keymap.set('n', '<C-Right>', ':vertical resize -2<CR>', opts)
+map('n', '<C-Up>', ':resize +2<CR>', opts)
+map('n', '<C-Down>', ':resize -2<CR>', opts)
+map('n', '<C-Left>', ':vertical resize +2<CR>', opts)
+map('n', '<C-Right>', ':vertical resize -2<CR>', opts)
 
 -- Navigate between window splits
-vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)
-vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
-vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
-vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
+map('n', '<C-k>', ':wincmd k<CR>', opts)
+map('n', '<C-j>', ':wincmd j<CR>', opts)
+map('n', '<C-h>', ':wincmd h<CR>', opts)
+map('n', '<C-l>', ':wincmd l<CR>', opts)
 
 -- Paste buffer override
-vim.keymap.set('v', 'p', '"_dP', opts)
+map('v', 'p', '"_dP', opts)
 
 -- delete without copying to register
-vim.keymap.set('v', 'd', '"_d', opts)
-vim.keymap.set('n', 'dd', '"_dd', opts)
+map('v', 'd', '"_d', opts)
+map('n', 'dd', '"_dd', opts)
 
 -- Buffers
-vim.keymap.set('n', '<C-Tab>', ':bnext<CR>', opts)
-vim.keymap.set('n', '<C-S-Tab>', ':bprevious<CR>', opts)
-vim.keymap.set('n', '<leader>x', ':bp | bd #<CR>', opts) -- close buffer without closing window
-vim.keymap.set('n', '<leader>t', '<cmd> enew <CR>', opts) -- new buffer
+map('n', '<C-Tab>', ':bnext<CR>', opts)
+map('n', '<C-S-Tab>', ':bprevious<CR>', opts)
+map('n', '<leader>x', ':bp | bd #<CR>', opts) -- close buffer without closing window
+map('n', '<leader>t', '<cmd> enew <CR>', opts) -- new buffer
 
 -- Undo and Redo with Ctrl+Z and Ctrl+Y in insert mode
-vim.keymap.set('i', '<C-z>', '<C-o>u', opts)
-vim.keymap.set('i', '<C-y>', '<C-o><C-r>', opts)
+map('i', '<C-z>', '<C-o>u', opts)
+map('i', '<C-y>', '<C-o><C-r>', opts)
+
+-- Easy paste in insert mode
+map('i', '<C-v>', '<Esc>pi')
 
 -- Delete next word with Ctrl+Delete in insert mode
-vim.keymap.set('i', '<C-Del>', '<C-o>dw', { noremap = true, silent = true })
+map('i', '<C-Del>', '<C-o>dw', opts)
 
 -- Git add current buffer/file
-vim.keymap.set('n', '<leader>ga', '<cmd>!git add %<CR>')
+map('n', '<leader>ga', '<cmd>!git add %<CR>')
 
 -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Make Enter key add a new line
-vim.keymap.set('n', '<CR>', 'o<Esc>', { desc = 'Add newline below in normal mode' })
+-- Easy line adding with enter
+map('n', '<CR>', 'o<Esc>', { desc = 'Add newline below in normal mode', noremap = true, silent = true })
+map('n', '<S-CR>', 'O<Esc>', { desc = 'Add newline below in normal mode', noremap = true, silent = true })
+
+-- Easy normal mode from terminal mode
+map('t', '<Esc><Esc>', '<C-\\><C-n>')
+
+-- Easy comments
+map('n', '<leader>.', 'gcc', { remap = true })
+map('v', '<leader>.', 'gc', { remap = true })
+
+-- Auto pairs
+local function wrap_selection(left, right)
+  return string.format('<Esc>`>a%s<Esc>`<i%s<Esc>', right, left)
+end
+
+vim.keymap.set('v', '(', wrap_selection('(', ')'))
+vim.keymap.set('v', '[', wrap_selection('[', ']'))
+vim.keymap.set('v', '{', wrap_selection('{', '}'))
+vim.keymap.set('v', '"', wrap_selection('"', '"'))
+vim.keymap.set('v', "'", wrap_selection("'", "'"))
 
 -- Zoom in/out in Neovide
 if vim.g.neovide then
     vim.g.neovide_scale_factor = 0.75 -- default zoom
-    vim.keymap.set({ "n", "v" }, "<C-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.05<CR>")
-    vim.keymap.set({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.05<CR>")
-    vim.keymap.set({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 0.075<CR>")
+    map({ "n", "v" }, "<C-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.05<CR>")
+    map({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.05<CR>")
+    map({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 0.75<CR>")
 end
+
