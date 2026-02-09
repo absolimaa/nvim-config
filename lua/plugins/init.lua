@@ -10,7 +10,6 @@ local function compile_plugins(plugin_names)
     return plugin_table
 end
 
-
 local plugins = {
     "onedark",
     "lsp",
@@ -21,14 +20,15 @@ local plugins = {
     "bufferline",
     "autopairs",
     "lualine",
-    "guess-indent",
     "gitsigns",
     "markdown",
+    "indent-lines",
+    "guess-indent",
 }
 
 require("plugins.lazy")
 require("lazy").setup({
-    compile_plugins(plugins)
+    compile_plugins(plugins),
 })
 
 require("plugins.keymaps")

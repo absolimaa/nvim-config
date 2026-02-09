@@ -6,6 +6,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 
+-- Remap redo key
+map('n', 'U', '<C-r>', opts)
+
+
 -- Toggle line wrapping
 map('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
 
