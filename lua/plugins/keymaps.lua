@@ -3,8 +3,8 @@ local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
 -- Neotree --
-map("n", "\\", ":Neotree toggle position=left<CR>", opts)
-map("n", "<leader>e", ":Neotree reveal<cr>", opts)
+map("n", "\\", ":Neotree toggle position=left<CR>:vertical resize 30<CR>", opts)
+map("n", "<leader>e", ":Neotree reveal<cr>:vertical resize 30<CR>", opts)
 
 -- Telescope --
 map("n", "<leader>sf", ":Telescope find_files<CR>", { desc = "Telescope find files" })
