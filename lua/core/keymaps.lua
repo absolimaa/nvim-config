@@ -27,13 +27,6 @@ vim.opt.shellquote = "\""
 vim.opt.shellxquote = ""
 
 
--- Indentation
-map('i', '<C-BS>', '<C-w>', opts)
-map('i', '<S-Tab>', '<C-d>', opts)
-map('n', '<S-Tab>', '<<', opts)
-map('v', '<S-Tab>', '<gv', opts)
-
-
 -- Resize windows
 map('n', '<C-Up>', ':resize +2<CR>', opts)
 map('n', '<C-Down>', ':resize -2<CR>', opts)
@@ -78,8 +71,8 @@ map("v", "<A-j>", ":move '>+1<CR>gv=gv", opts)
 map("v", "<A-k>", ":move '<-2<CR>gv=gv", opts)
 
 
--- Easy paste in insert mode
-map('i', '<C-v>', '<Esc>pi')
+-- Easy paste in command mode
+map('c', '<C-v>', '<C-r>+')
 
 
 -- Delete next word with Ctrl+Delete in insert mode
@@ -99,8 +92,8 @@ map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 
 -- Easy line adding with enter
-map('n', '<CR>', 'o<Esc>', { desc = 'Add newline below in normal mode', noremap = true, silent = true })
-map('n', '<S-CR>', 'O<Esc>', { desc = 'Add newline below in normal mode', noremap = true, silent = true })
+map('n', '<CR>', 'o<Esc>', opts)
+map('n', '<S-CR>', 'O<Esc>', opts)
 
 
 -- Diagnostics
