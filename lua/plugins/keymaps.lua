@@ -17,7 +17,6 @@ map('n', '<leader>hp', ':Gitsigns prev_hunk<CR>')
 
 -- LSP --
 map('n', 'grn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
-map({ 'n', 'x' }, 'gra', vim.lsp.buf.code_action, { desc = '[G]oto Code [A]ction' })
 map('n', 'grr', ':Telescope lsp_references<CR>', { desc = '[G]oto [R]eferences' })
 map('n', 'gri', ':Telescope lsp_implementations<CR>', { desc = '[G]oto [I]mplementation' })
 map('n', 'grd', ':Telescope lsp_definitions<CR>', { desc = '[G]oto [D]efinition' })
