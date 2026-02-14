@@ -29,8 +29,8 @@ map('n', 'grt', ':Telescope lsp_type_definitions<CR>', { desc = '[G]oto [T]ype D
 map('n', '<leader>P', ':LivePreview start<CR>', opts)
 map('n', '<leader>Px', ':LivePreview close<CR>', opts)
 
--- Keymap to toggle autoformat
-vim.keymap.set('n', '<leader>tf', '<cmd>ToggleAutoformat<cr>', { desc = 'Toggle autoformat' })
+-- Toggle autoformat
+map('n', '<leader>tf', ':ToggleAutoformat<CR>', { silent = true, desc = 'Toggle autoformat' })
 
 -- Manual format keymap for all languages
 vim.keymap.set('n', '<leader>fm', function()

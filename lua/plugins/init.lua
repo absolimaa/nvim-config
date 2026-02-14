@@ -26,6 +26,7 @@ local plugins = {
     'guess-indent',
     'cmake',
     'vimbegood',
+    'toggleterm',
 }
 
 require('plugins.lazy')
