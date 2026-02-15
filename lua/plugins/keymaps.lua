@@ -17,6 +17,7 @@ map('n', '<leader>hp', ':Gitsigns prev_hunk<CR>')
 
 -- LSP --
 map('n', 'grn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
+map('n', '<leader>ds', vim.lsp.buf.code_action, { desc = 'See code actions' })
 map('n', 'grr', ':Telescope lsp_references<CR>', { desc = '[G]oto [R]eferences' })
 map('n', 'gri', ':Telescope lsp_implementations<CR>', { desc = '[G]oto [I]mplementation' })
 map('n', 'grd', ':Telescope lsp_definitions<CR>', { desc = '[G]oto [D]efinition' })
@@ -26,8 +27,11 @@ map('n', 'gW', ':Telescope lsp_dynamic_worspace_symbols<CR>', { desc = 'Open Wor
 map('n', 'grt', ':Telescope lsp_type_definitions<CR>', { desc = '[G]oto [T]ype Definition' })
 
 -- Markdown Preview --
-map('n', '<leader>P', ':LivePreview start<CR>', opts)
-map('n', '<leader>Px', ':LivePreview close<CR>', opts)
+map('n', '<leader>md', ':LivePreview start<CR>', opts)
+map('n', '<leader>mdx', ':LivePreview close<CR>', opts)
+
+-- Live Server
+map('n', '<leader>ls', ':LiveServerToggle<CR>')
 
 -- Toggle autoformat
 map('n', '<leader>tf', ':ToggleAutoformat<CR>', { silent = true, desc = 'Toggle autoformat' })

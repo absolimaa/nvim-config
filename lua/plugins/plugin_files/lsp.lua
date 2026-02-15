@@ -1,7 +1,7 @@
 return {
     'mason-org/mason-lspconfig.nvim',
     opts = {
-        ensure_installed = { 'lua_ls', 'clangd', 'basedpyright', 'neocmakelsp', 'json-lsp' },
+        ensure_installed = { 'lua_ls', 'clangd', 'basedpyright', 'neocmakelsp', 'json-lsp', 'marksman' },
     },
     dependencies = {
         {

@@ -27,6 +27,7 @@ local plugins = {
     'cmake',
     'vimbegood',
     'toggleterm',
+    'live-server'
 }
 
 require('plugins.lazy')

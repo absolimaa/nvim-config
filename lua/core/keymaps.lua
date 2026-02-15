@@ -46,6 +46,14 @@ map('v', 'p', '"_dP', opts)
 map('v', 'd', '"_d', opts)
 map('n', 'dd', '"_dd', opts)
 
+map('n', 'ciw', '"_ciw', { noremap = true })
+map('n', 'caw', '"_caw', { noremap = true })
+map('n', 'ci"', '"_ci"', { noremap = true })
+map('n', "ci'", '"_ci\'', { noremap = true })
+map('n', 'ci(', '"_ci(', { noremap = true })
+map('n', 'ci{', '"_ci{', { noremap = true })
+map('n', 'ci[', '"_ci[', { noremap = true })
+map('n', 'ci<', '"_ci<', { noremap = true })
 
 -- Buffers
 map('n', '<leader>q', ':bnext<CR>', opts)
@@ -97,12 +105,6 @@ map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Easy line adding with enter
 map('n', '<CR>', 'o<Esc>', opts)
 map('n', '<S-CR>', 'O<Esc>', opts)
-
-
--- Diagnostics
-map("n", "<leader>dn", ":lua vim.diagnostic.goto_next()<CR>")
-map("n", "<leader>dp", ":lua vim.diagnostic.goto_prev()<CR>")
-map("n", "<leader>ds", ":lua vim.lsp.buf.code_action()<CR>")
 
 
 -- Easy normal mode from terminal mode
