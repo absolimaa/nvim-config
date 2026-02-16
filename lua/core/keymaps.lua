@@ -111,11 +111,6 @@ map('n', '<S-CR>', 'O<Esc>', opts)
 map('t', '<Esc><Esc>', '<C-\\><C-n>')
 
 
--- Easy comments
-map('n', '<leader>.', 'gcc', { remap = true })
-map('v', '<leader>.', 'gc', { remap = true })
-
-
 -- Select all
 map('n', '<leader>A', 'ggVG', opts)
 
