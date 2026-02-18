@@ -62,6 +62,11 @@ map('n', '<leader>x', ':bp | bd #<CR>', opts)  -- close buffer without closing w
 map('n', '<leader>t', '<cmd> enew <CR>', opts) -- new buffer
 
 
+-- Go to end/beginning of line in insert mode (END/HOME key alternatives)
+map('i', '<C-e>', '<C-o>A', opts)
+map('i', '<C-h>', '<C-o>I', opts)
+
+
 -- Undo and Redo with Ctrl+Z and Ctrl+Y in insert mode
 map('i', '<C-z>', '<C-o>u', opts)
 map('i', '<C-y>', '<C-o><C-r>', opts)
@@ -129,8 +134,8 @@ map('v', "'", wrap_selection("'", "'"))
 
 -- Zoom in/out in Neovide
 if vim.g.neovide then
-    vim.g.neovide_scale_factor = 0.75 -- default zoom
+    vim.g.neovide_scale_factor = 0.70 -- default zoom
     map({ "n", "v" }, "<C-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.05<CR>")
     map({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.05<CR>")
-    map({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 0.75<CR>")
+    map({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 0.70<CR>")
 end
