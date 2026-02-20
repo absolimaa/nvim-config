@@ -1,8 +1,10 @@
 -- Default shell
-vim.opt.shell = "powershell"
-vim.opt.shellcmdflag = "-command"
-vim.opt.shellquote = "\""
-vim.opt.shellxquote = ""
+if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+    vim.opt.shell = "powershell"
+    vim.opt.shellcmdflag = "-command"
+    vim.opt.shellquote = "\""
+    vim.opt.shellxquote = ""
+end
 
 vim.wo.number = true
 vim.o.relativenumber = true

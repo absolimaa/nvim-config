@@ -62,6 +62,11 @@ map('n', '<leader>x', ':bp | bd #<CR>', opts)  -- close buffer without closing w
 map('n', '<leader>t', '<cmd> enew <CR>', opts) -- new buffer
 
 
+-- Go to end/beginning of line in insert mode (END/HOME key alternatives)
+map('i', '<C-e>', '<C-o>A', opts)
+map('i', '<C-h>', '<C-o>I', opts)
+
+
 -- Undo and Redo with Ctrl+Z and Ctrl+Y in insert mode
 map('i', '<C-z>', '<C-o>u', opts)
 map('i', '<C-y>', '<C-o><C-r>', opts)
