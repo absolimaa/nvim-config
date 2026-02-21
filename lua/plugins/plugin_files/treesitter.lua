@@ -1,14 +1,15 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
-  lazy = false,
-  build = ':TSUpdate',
-  opts = {
-    ensure_installed = {
-        'c', 'cpp', 'python', 'html', 'css', 'lua',
-        'make', 'cmake', 'yaml', 'json', 'markdown',
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    build = ':TSUpdate',
+    config = function()
+        require('nvim-treesitter').install({
+            'c', 'cpp', 'python', 'html', 'css', 'lua',
+            'make', 'cmake', 'yaml', 'json', 'markdown',
+        })
+    end,
+    opts = {
+        highlight = { enable = true },
+        indent = { enable = true },
     },
-    auto_install = true,
-    highlight = { enable = true, },
-    indent = { enable = true, },
-  },
 }
