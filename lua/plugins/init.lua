@@ -29,6 +29,7 @@ local plugins = {
     'toggleterm',
     'live-server',
     'comment',
+    'neogen'
 }
 
 require('plugins.lazy')
