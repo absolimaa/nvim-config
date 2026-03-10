@@ -139,3 +139,9 @@ if vim.g.neovide then
     map({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.05<CR>")
     map({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 0.70<CR>")
 end
+
+-- Toggle fullscreen in Neovide
+if vim.g.neovide then
+    vim.g.neovide_fullscreen = false
+    map({ "n", "<C-F>", ":lua vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen<CR>"})
+end
